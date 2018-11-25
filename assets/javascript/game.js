@@ -5,14 +5,14 @@ $(document).ready(function() {
 		{
 			name: "apple",
 			hp: 120,
-			ap: 8,
+			ap: 11,
 			cap: 16,
 			imgSrc: "assets/images/apple.png",
 			altText: "Black and white illustration of an apple."
 		},
 		{
 			name: "orange",
-			hp: 110,
+			hp: 130,
 			ap: 10,
 			cap: 15,
 			imgSrc: "assets/images/orange.png",
@@ -49,7 +49,7 @@ $(document).ready(function() {
 	var opponentHP = 0;
 	var opponentCAP = 0;
 
-	// Function that resets global variables, clears DOM values, and displays selectable fruits.
+	// Function that resets global variables, clears DOM, and displays fruits.
 	function reset() {
 		characterChosen = false;
 		opponentChosen = false;
@@ -95,10 +95,10 @@ $(document).ready(function() {
 	// Reset the game.
 	reset();
 
-	// If user selects a character, that character is selected as your character. The next fruit selection is your opponent.
+	// Handle character and opponent selection.
 	$(".fruit-select").on("click", function() {
 
-		// Local variables for caching references
+		// Local variables for caching references.
 		var $fruit = $(this);
 		var $name = $(this).attr("data-name"); 
 
@@ -119,7 +119,6 @@ $(document).ready(function() {
 
 			// Chararacter has now been selected.
 			characterChosen = true;
-
 			$("#select-character-text").text("Select your opponent!");
 
 		// If your character has been chosen, then the next choice is your opponent.
@@ -224,7 +223,7 @@ $(document).ready(function() {
 			alert("You need to select an opponent!");
 		}
 
-		// If the number of available enemies to attack is less than or equal to zero, game is over and the restart button is displayed.
+		// Handle end of game if all characters defeated.
 		if (opponentsDefeated === 3) {
 
 			// Display victory text.
