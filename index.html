@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fruit Fight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Stylesheets  -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Sacramento" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/ico" href="assets/images/favicon.ico"/>
+</head>
+<body>
+    <!-- Main wrapper -->
+    <div id="main-wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <h1>fruit fight</h1>
+        </header>
+
+        <!-- Body wrapper -->
+        <div id="body-wrapper">
+
+            <!-- Row of selectable characters -->
+            <section id="select-character">
+
+                <div id="select-row"></div>
+
+                <div id="select-character-text"></div>
+    
+            </section>
+
+            <!-- Row where combat takes place -->
+            <section id="combat-area">
+                <div id="combat-row">
+                    <!-- Your selected character appears here -->
+                    <div class="combat-fruit-wrapper" id="your-characters-spot">
+                    </div>
+                    <!-- Vs text and attack button -->
+                    <div id="vs">
+                        <p id="vs-text">versus</p>
+                        <button id="attack-button" value="attack">attack</button>
+                    </div>
+
+                    <!-- Your opponent appears here -->
+                    <div class="combat-fruit-wrapper" id="your-opponents-spot">
+                    </div>
+                </div>
+                <!-- Game events (attacks, counterattacks, results) appear here -->
+                <div id="game-events">
+                    <p id="attack-comment"></p>
+                    <p id="counterattack-comment"></p>
+                </div>
+            </section>
+
+            <!-- Graveyard -->
+            <section id="graveyard">
+                <span>☠☠☠</span>
+                <h2>graveyard</h2>
+
+                    <div id="graveyard-row">
+                        <!-- Your grave-yard items go here. -->
+                    </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    
+</body>
+</html>
