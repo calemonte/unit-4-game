@@ -1,20 +1,20 @@
 $(document).ready(function() {
 
-	// Create objects containing four available characters. 
+	// Array of objects containing four available characters. 
 	var fruits = [
 		{
 			name: "apple",
 			hp: 120,
 			ap: 8,
-			cap: 15,
+			cap: 16,
 			imgSrc: "assets/images/apple.png",
 			altText: "Black and white illustration of an apple."
 		},
 		{
 			name: "orange",
-			hp: 100,
+			hp: 110,
 			ap: 10,
-			cap: 8,
+			cap: 15,
 			imgSrc: "assets/images/orange.png",
 			altText: "Black and white illustration of an orange."
 		},
@@ -22,16 +22,16 @@ $(document).ready(function() {
 			name: "strawberry",
 			hp: 150,
 			ap: 12,
-			cap: 20,
+			cap: 17,
 			imgSrc: "assets/images/strawberry.png",
 			altText: "Black and white illustration of a strawberry."
 
 		},
 		{
 			name: "pear",
-			hp: 180,
+			hp: 160,
 			ap: 15,
-			cap: 25,
+			cap: 16,
 			imgSrc: "assets/images/pear.png",
 			altText: "Black and white illustration of a pear."
 		}
@@ -41,57 +41,21 @@ $(document).ready(function() {
 	var characterChosen = false;
 	var opponentChosen = false;
 	var opponentsDefeated = 0;
-	var yourCharacter = "";
-	var yourOpponent = "";
+	var yourCharacter;
+	var yourOpponent;
 	var characterHP = 0;
 	var characterBaseAP = 0;
 	var characterAP = 0;
 	var opponentHP = 0;
 	var opponentCAP = 0;
 
-	// // Function that creates a modal for restarting the game.
-	// function modal() {
-	// 	// Create new modal.
-	// 	$([ 
-	// 		"<div class='modal'>",
-	// 		"<div class='modal-content'>",
-	// 		"<span class='close'" + "&times;" + "</span>"
-	// 	]);
-
-	// 	// Create references to modal elements.
-	// 	var $modal = $(".modal");
-	// 	var $modalContent = $(".modal-content");
-	// 	var $span = $(".close");
-
-	// 	// Display the modal.
-	// 	$modal.style.display = "block";
-	// 	$modal.text("Game over! Click the button below to play again.");
-	// 	$modal.append($("<button id='restart'>" + "Try Again" + "</button>"));
-		
-	// 	// Hide the modal if the user clicks on the X span.
-	// 	$(".span").on("click", function () {
-	// 		$modal.style.display = "none";
-	// 	});
-
-	// 	$("#restart").on("click", function() {
-	// 		location.reload();
-	// 	});
-
-	// 	$(window).on("click", function() {
-	// 		if (event.target == $modal) {
-	// 			$modal.style.display = "none";
-	// 		}
-	// 	});
-
-	// }
-
 	// Function that resets global variables, clears DOM values, and displays selectable fruits.
 	function reset() {
 		characterChosen = false;
 		opponentChosen = false;
 		opponentsDefeated = 0;
-		yourCharacter = "";
-		yourOpponent = "";
+		yourCharacter;
+		yourOpponent;
 		characterHP = 0;
 		characterBaseAP = 0;
 		characterAP = 0;
@@ -103,7 +67,7 @@ $(document).ready(function() {
 		$("#game-events").hide();
 		$("#graveyard").hide();
 
-		// Empty DOM values
+		// Empty DOM values.
 		$("#select-row, #your-characters-spot, #your-stats, #your-opponents-spot, #opponent-stats, #attack-comment, #counterattack-comment").empty();
 
 		// Create fruit images with their own unique ids and data values.
@@ -119,6 +83,7 @@ $(document).ready(function() {
 				"data-cap": fruits[i].cap
 			});
 		
+		// Append fruits to the DOM.
 		$("#select-row").append(fruitImage);
 		}
 
@@ -130,7 +95,7 @@ $(document).ready(function() {
 	// Reset the game.
 	reset();
 
-	// If user selects a character, that character is selected as your character. The next fruit selection is automatically identified as your opponent.
+	// If user selects a character, that character is selected as your character. The next fruit selection is your opponent.
 	$(".fruit-select").on("click", function() {
 
 		// Local variables for caching references
@@ -182,7 +147,7 @@ $(document).ready(function() {
 			return false;
 		}
 	});
-	// If user clicks the attack button, reduce and display defender HP by attacker's attack power, reduce and display attacker's HP by defender's counterack power, and then increment attacker's attack power by the base power (if it was 6, attackPower += 6). 
+	// When user clicks attack, handle damage and health logic.
 	$("#attack-button").on("click", function() {
 
 		if (characterChosen && opponentChosen) {
@@ -263,7 +228,7 @@ $(document).ready(function() {
 		if (opponentsDefeated === 3) {
 
 			// Display victory text.
-			$("#select-character-text").text("Splendid! You're the fiercest fruit figher around." );
+			$("#select-character-text").text("Splendid! You're the fiercest fruit fighter around." );
 
 			// Create and display restart button. 
 			$("#select-character-text").append($("<div>" + "<button id='restart'>" + "Play again" + "</button>"));
@@ -273,7 +238,5 @@ $(document).ready(function() {
 				location.reload();
 			});
 		}
-	
 	});
-
 });
