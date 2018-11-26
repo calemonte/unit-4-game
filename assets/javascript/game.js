@@ -8,6 +8,7 @@ $(document).ready(function() {
 			ap: 11,
 			cap: 16,
 			imgSrc: "assets/images/apple.png",
+			imgXSrc: "assets/images/appleX.png",
 			altText: "Black and white illustration of an apple."
 		},
 		{
@@ -16,6 +17,7 @@ $(document).ready(function() {
 			ap: 10,
 			cap: 15,
 			imgSrc: "assets/images/orange.png",
+			imgXSrc: "assets/images/orangeX.png",
 			altText: "Black and white illustration of an orange."
 		},
 		{
@@ -24,8 +26,8 @@ $(document).ready(function() {
 			ap: 12,
 			cap: 17,
 			imgSrc: "assets/images/strawberry.png",
+			imgXSrc: "assets/images/strawberryX.png",
 			altText: "Black and white illustration of a strawberry."
-
 		},
 		{
 			name: "pear",
@@ -33,6 +35,7 @@ $(document).ready(function() {
 			ap: 15,
 			cap: 16,
 			imgSrc: "assets/images/pear.png",
+			imgXSrc: "assets/images/pearX.png",
 			altText: "Black and white illustration of a pear."
 		}
 	];
@@ -77,6 +80,7 @@ $(document).ready(function() {
 			fruitImage.attr({
 				"src": fruits[i].imgSrc,
 				"alt": fruits[i].altText,
+				"data-xSrc": fruits[i].imgXSrc,
 				"data-name": fruits[i].name,
 				"data-hp": fruits[i].hp,
 				"data-ap": fruits[i].ap,
@@ -193,13 +197,17 @@ $(document).ready(function() {
 				// Cache local reference to your current opponent.
 				var $defeated = $("#your-opponent");
 
+				// Cache local reference to X'd out fruit image.
+				var $imgX = $defeated.attr("data-xSrc");
+
 				// Show graveyard.
 				$("#graveyard").show();
 
 				// Remove old classes and append defeated fruit image to graveyard.
 				$defeated.removeClass("combat-fruit-wrapper")
 					.addClass("graveyard-item")
-					.removeAttr("id");
+					.removeAttr("id")
+					.attr("src", $imgX);
 				$("#graveyard-row").append($defeated);
 
 				// Display defeated text.
