@@ -173,7 +173,7 @@ $(document).ready(function() {
 			// Add to character attack power.
 			characterAP += characterBaseAP;
 
-			// If attacker HP is less than or equal to 0 && opponent HP is greater than or equal to 0, attacker loses and the game is over. 
+			// Handle behavior if character is defeated. 
 			if (characterHP <= 0) {
 				// Empty attack comment.
 				$("#attack-comment").empty();
@@ -192,13 +192,14 @@ $(document).ready(function() {
 					location.reload();
 				});
 
-			} else if (opponentHP <= 0 && opponentsDefeated <= 3) {
+			// Handle behavior if opponent is defeated.
+			} else if (opponentHP <= 0) {
 
 				// Cache local reference to your current opponent.
 				var $defeated = $("#your-opponent");
 
 				// Cache local reference to X'd out fruit image.
-				var $imgX = $defeated.attr("data-xSrc");
+				// var $imgX = $defeated.attr("data-xSrc");
 
 				// Show graveyard.
 				$("#graveyard").show();
@@ -206,8 +207,8 @@ $(document).ready(function() {
 				// Remove old classes and append defeated fruit image to graveyard.
 				$defeated.removeClass("combat-fruit-wrapper")
 					.addClass("graveyard-item")
-					.removeAttr("id")
-					.attr("src", $imgX);
+					// .attr("src", $defeated.attr("data-xSrc"))
+					.removeAttr("id");
 				$("#graveyard-row").append($defeated);
 
 				// Display defeated text.
