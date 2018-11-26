@@ -152,14 +152,14 @@ $(document).ready(function() {
 		if (characterChosen && opponentChosen) {
 			opponentHP -= characterAP;
 
-			// Don't register opponent counter-attack if opponent dies.
+			// Don't register opponent counter-attack if opponent dies first.
 			if (opponentHP > 0) {
 				characterHP -= opponentCAP;
 			}
 
 			// Update displayed stats.
 			$("#your-stats").text("Health: " + characterHP);
-			$("#opponent-stats").text("Health " + opponentHP);
+			$("#opponent-stats").text("Health: " + opponentHP);
 
 			// Display the attack values for your character and the opponent.
 			$("#game-events").show();
@@ -197,8 +197,9 @@ $(document).ready(function() {
 				$("#graveyard").show();
 
 				// Remove old classes and append defeated fruit image to graveyard.
-				$defeated.removeClass("combat-fruit-wrapper").addClass("graveyard-item");
-				$defeated.removeAttr("id");
+				$defeated.removeClass("combat-fruit-wrapper")
+					.addClass("graveyard-item")
+					.removeAttr("id");
 				$("#graveyard-row").append($defeated);
 
 				// Display defeated text.
