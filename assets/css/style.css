@@ -173,3 +173,30 @@ Graveyard area styles
     top: 0;
     z-index: 100;
 } */
+
+@media screen and (max-width: 600px) {
+
+    .fruit-select, .graveyard-item {
+        width: 60px;
+    }
+
+    .combat-fruit-wrapper {
+        height: 100px;
+        width: 100px;
+        padding-bottom: 2em;
+    }
+
+    #your-stats, #opponent-stats {
+        font-size: 14px;
+    }
+
+    #vs-text {
+        font-size: 30px;
+    }
+
+    #attack-button, #restart {
+        padding: 0.5em;
+        margin-top: 1em;
+        font-size: 12px;
+    }
+}

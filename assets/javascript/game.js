@@ -5,37 +5,33 @@ $(document).ready(function() {
 		{
 			name: "apple",
 			hp: 120,
-			ap: 11,
-			cap: 16,
+			ap: 9,
+			cap: 14,
 			imgSrc: "assets/images/apple.png",
-			imgXSrc: "assets/images/appleX.png",
 			altText: "Black and white illustration of an apple."
 		},
 		{
 			name: "orange",
 			hp: 130,
-			ap: 10,
-			cap: 15,
+			ap: 8,
+			cap: 14,
 			imgSrc: "assets/images/orange.png",
-			imgXSrc: "assets/images/orangeX.png",
 			altText: "Black and white illustration of an orange."
 		},
 		{
 			name: "strawberry",
 			hp: 150,
-			ap: 12,
-			cap: 17,
+			ap: 6,
+			cap: 15,
 			imgSrc: "assets/images/strawberry.png",
-			imgXSrc: "assets/images/strawberryX.png",
 			altText: "Black and white illustration of a strawberry."
 		},
 		{
 			name: "pear",
 			hp: 160,
-			ap: 15,
-			cap: 16,
+			ap: 5,
+			cap: 20,
 			imgSrc: "assets/images/pear.png",
-			imgXSrc: "assets/images/pearX.png",
 			altText: "Black and white illustration of a pear."
 		}
 	];
@@ -71,7 +67,7 @@ $(document).ready(function() {
 		$("#graveyard").hide();
 
 		// Empty DOM values.
-		$("#select-row, #your-characters-spot, #your-stats, #your-opponents-spot, #opponent-stats, #attack-comment, #counterattack-comment").empty();
+		$("#select-row, #your-characters-spot, #your-stats, #your-opponents-spot, #opponent-stats, #attack-comment, #counterattack-comment, #graveyard-row").empty();
 
 		// Create fruit images with their own unique ids and data values.
 		for (var i = 0; i < fruits.length; i++) {
@@ -99,8 +95,8 @@ $(document).ready(function() {
 	// Reset the game.
 	reset();
 
-	// Handle character and opponent selection.
-	$(".fruit-select").on("click", function() {
+	// Handle character and opponent selection. 
+	$("body").on("click", ".fruit-select", function() {
 
 		// Local variables for caching references.
 		var $fruit = $(this);
@@ -189,7 +185,7 @@ $(document).ready(function() {
 
 				// Restart game if pressed.
 				$("#restart").on("click", function() {
-					location.reload();
+					reset();
 				});
 
 			// Handle behavior if opponent is defeated.
@@ -198,16 +194,12 @@ $(document).ready(function() {
 				// Cache local reference to your current opponent.
 				var $defeated = $("#your-opponent");
 
-				// Cache local reference to X'd out fruit image.
-				// var $imgX = $defeated.attr("data-xSrc");
-
 				// Show graveyard.
 				$("#graveyard").show();
 
 				// Remove old classes and append defeated fruit image to graveyard.
 				$defeated.removeClass("combat-fruit-wrapper")
 					.addClass("graveyard-item")
-					// .attr("src", $defeated.attr("data-xSrc"))
 					.removeAttr("id");
 				$("#graveyard-row").append($defeated);
 
@@ -234,7 +226,7 @@ $(document).ready(function() {
 		}
 
 		// Handle end of game if all characters defeated.
-		if (opponentsDefeated === 3) {
+		if (opponentsDefeated === fruits.length - 1) {
 
 			// Display victory text.
 			$("#select-character-text").text("Splendid! You're the fiercest fruit fighter around." );
@@ -244,7 +236,7 @@ $(document).ready(function() {
 
 			// Restart game if pressed.
 			$("#restart").on("click", function() {
-				location.reload();
+				reset();
 			});
 		}
 	});
