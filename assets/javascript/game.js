@@ -76,7 +76,6 @@ $(document).ready(function() {
 			fruitImage.attr({
 				"src": fruits[i].imgSrc,
 				"alt": fruits[i].altText,
-				"data-xSrc": fruits[i].imgXSrc,
 				"data-name": fruits[i].name,
 				"data-hp": fruits[i].hp,
 				"data-ap": fruits[i].ap,
