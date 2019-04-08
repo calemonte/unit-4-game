@@ -1,6 +1,6 @@
 ![The Fruit Fight logo.](./assets/images/fruitfight.png  "The Fruit Fight logo")
 
-# Fruit Fighters RPG Game
+# Fruit Fight
 
 A simple game in which the user selects one of four fruits as their "fruit fighter" in an effort to defeat the remaining three fruits. 
 
